@@ -1,0 +1,24 @@
+{
+  "name": "package.json",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@coreui/coreui-pro": "^5.3.0",
+    "@coreui/vue-pro": "^5.3.0",
+    "lz-string": "^1.5.0",
+    "vue": "^3.2.25",
+    "vue-multiselect": "^3.0.0",
+    "vue-router": "^4.0.12",
+    "vue-toast-notification": "^3.1.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.2.0",
+    "sass": "^1.49.8",
+    "vite": "^2.8.0"
+  }
+}
