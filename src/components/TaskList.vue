@@ -67,6 +67,7 @@ const getPriorityClass = (priority) => {
 
   const priorityStr = String(priority).toLowerCase(); // Convert priority to string and lower case
 
+  
   switch (priorityStr) {
     case 'low':
       return 'priority-low';
