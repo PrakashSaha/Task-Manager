@@ -55,7 +55,6 @@ const menuItems = [
 ];
 
 const bottomMenuItems = [
-  { to: '/account', icon: 'account_circle', text: 'Account' },
   { to: '/setting', icon: 'settings', text: 'Settings' }
 ];
 </script>
