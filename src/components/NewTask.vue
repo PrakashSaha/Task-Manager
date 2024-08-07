@@ -371,7 +371,7 @@ const addTask = () => {
       background-color: #eaeaea;
       border: 1px dashed #ccc;
       margin-bottom: 10px;
-      padding: 5px;
+      padding: 8px;
       overflow: hidden;
 
       img {

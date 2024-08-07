@@ -15,7 +15,7 @@
 			</thead>
 			<tbody>
 			  <tr v-for="(trash, index) in paginatedTrash" :key="index">
-				<td><span class="material-icons">{{ trash.team }}</span></td>
+				<td>{{trash.team.join(', ')}}</td>
 				<td>{{ trash.created }}</td>
 				<td>{{ trash.title }}</td>
 				<td class="button">
@@ -38,35 +38,11 @@
   <script setup>
   import { ref, computed } from 'vue'
   import Pagination from '../components/Pagination.vue' // adjust the path as necessary
-  
+  import { tasksData, trashsData  } from '../data.js';
+
   // Define the tasks data
-  const trashs = ref([
-	{ team: 'check_circle', created: '2024-07-22', title: 'Task 1', priority: 'Low' },
-	{ team: 'error', created: '2024-07-23', title: 'Task 2', priority: 'Medium' },
-	{ team: 'warning', created: '2024-07-24', title: 'Task 3', priority: 'High' },
-	{ team: 'check_circle', created: '2024-07-22', title: 'Task 1', priority: 'Low' },
-	{ team: 'error', created: '2024-07-23', title: 'Task 2', priority: 'Medium' },
-	{ team: 'warning', created: '2024-07-24', title: 'Task 3', priority: 'High' },
-	{ team: 'check_circle', created: '2024-07-22', title: 'Task 1', priority: 'Low' },
-	{ team: 'error', created: '2024-07-23', title: 'Task 2', priority: 'Medium' },
-	{ team: 'warning', created: '2024-07-24', title: 'Task 3', priority: 'High' },
-	{ team: 'check_circle', created: '2024-07-22', title: 'Task 1', priority: 'Low' },
-	{ team: 'error', created: '2024-07-23', title: 'Task 2', priority: 'Medium' },
-	{ team: 'warning', created: '2024-07-24', title: 'Task 3', priority: 'High' },
-	{ team: 'check_circle', created: '2024-07-22', title: 'Task 1', priority: 'Low' },
-	{ team: 'error', created: '2024-07-23', title: 'Task 2', priority: 'Medium' },
-	{ team: 'warning', created: '2024-07-24', title: 'Task 3', priority: 'High' },
-	{ team: 'check_circle', created: '2024-07-22', title: 'Task 1', priority: 'Low' },
-	{ team: 'error', created: '2024-07-23', title: 'Task 2', priority: 'Medium' },
-	{ team: 'warning', created: '2024-07-24', title: 'Task 3', priority: 'High' },
-	{ team: 'check_circle', created: '2024-07-22', title: 'Task 1', priority: 'Low' },
-	{ team: 'error', created: '2024-07-23', title: 'Task 2', priority: 'Medium' },
-	{ team: 'warning', created: '2024-07-24', title: 'Task 3', priority: 'High' },
-	{ team: 'check_circle', created: '2024-07-22', title: 'Task 1', priority: 'Low' },
-	{ team: 'error', created: '2024-07-23', title: 'Task 2', priority: 'Medium' },
-	{ team: 'warning', created: '2024-07-24', title: 'Task 3', priority: 'High' },
-	// Add more tasks as necessary
-  ])
+  const trashs = ref(trashsData);
+  
   
   const itemsPerPage = 12
   const currentPage = ref(1)
@@ -83,9 +59,10 @@
 	currentPage.value = page
   }
   
+
   const restoreTask = (index) => {
 	const task = trashs.value.splice(index, 1)[0]
-	restoreToTasks(task)
+	tasksData.push(task);
   }
   
   const permanentlyDeleteTask = (index) => {
@@ -93,11 +70,6 @@
 	localStorage.setItem('trash', JSON.stringify(trashs.value))
   }
   
-  const restoreToTasks = (task) => {
-	let tasks = JSON.parse(localStorage.getItem('tasks')) || []
-	tasks.push(task)
-	localStorage.setItem('tasks', JSON.stringify(tasks))
-  }
   
   const clearTrash = () => {
 	trashs.value = []

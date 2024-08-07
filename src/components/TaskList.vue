@@ -42,7 +42,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import Pagination from './Pagination.vue'; // Adjust the path as necessary
-import { tasksData } from '../data.js';
+import { tasksData, trashsData  } from '../data.js';
 
 const tasks = ref(tasksData);
 
@@ -88,7 +88,14 @@ const editTask = (index) => {
 };
 
 const deleteTask = (index) => {
-  alert(`Delete task ${index + 1}`);
+  // Find the task to delete
+  const taskToDelete = tasks.value[index];
+  
+  // Move the task to trashData
+  trashsData.push(taskToDelete);
+  
+  // Remove the task from tasks
+  tasks.value.splice(index, 1);
 };
 </script>
 

@@ -7,7 +7,7 @@ export const tasksData = [
     team: ['Praskash', 'Ananda'],
     priority: 'Low',
     created: '2023-02-20',
-    description: 'Create a new landing page for the marketing campaign.',
+    description: 'Create a new landing page for the marketing campaign. Create a new landing page for the marketing campaign. Create a new landing page for the marketing campaign. Create a new landing page for the marketing campaign. Create a new landing page for the marketing campaign. Create a new landing page for the marketing campaign. Create a new landing page for the marketing campaign. ',
     attachments: ['https://via.placeholder.com/150', 'https://via.placeholder.com/150']
   },
   {
@@ -34,7 +34,7 @@ export const tasksData = [
     status: 'inprogress',
     title: 'Database Migration',
     type: 'Backend',
-    team: ['Utsav', 'Arnob'],
+    team: ['Utsav', 'Arnob','Ananda'],
     priority: 'High',
     created: '2023-02-21',
     description: 'Migrate the existing database to a new schema.',
@@ -249,3 +249,47 @@ export  const teamData = [
     control: 'team'
   },
 ];
+
+export const trashsData = [
+  {
+    status: 'inprogress',
+    title: 'Build Landing Page',
+    type: 'Website',
+    team: ['Praskash', 'Ananda'],
+    priority: 'Low',
+    created: '2023-02-20',
+    description: 'Create a new landing page for the marketing campaign. ',
+    attachments: ['https://via.placeholder.com/150', 'https://via.placeholder.com/150']
+  },
+  {
+    status: 'inprogress',
+    title: 'Database Migration',
+    type: 'Backend',
+    team: ['Utsav', 'Arnob'],
+    priority: 'High',
+    created: '2023-02-21',
+    description: 'Migrate the existing database to a new schema.',
+    attachments: ['https://via.placeholder.com/150']
+  },
+  {
+    status: 'inprogress',
+    title: 'Build Landing Page',
+    type: 'Website',
+    team: ['Praskash', 'Ananda'],
+    priority: 'midium',
+    created: '2023-02-20',
+    description: 'Create a new landing page for the marketing campaign.',
+    attachments: ['https://via.placeholder.com/150', 'https://via.placeholder.com/150']
+  },
+  {
+    status: 'inprogress',
+    title: 'Database Migration',
+    type: 'Backend',
+    team: ['Utsav', 'Arnob','Ananda'],
+    priority: 'High',
+    created: '2023-02-21',
+    description: 'Migrate the existing database to a new schema.',
+    attachments: ['https://via.placeholder.com/150']
+  },
+
+  ];

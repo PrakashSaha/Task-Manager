@@ -1,5 +1,10 @@
 <template>
 	<div class="task__card" v-for="(task, index) in tasks" :key="index">
+		<div class="popup_control">
+			<button @click="togglePopup(index)" >View</button>
+			<button @click="togglePopup(index)" >Edit</button>
+			<button @click="togglePopup(index)" >Delete</button>
+		</div>
 	  <div class="TaskBody">
 		<section class="TaskBody__header">
 		  <section class="header__text">
@@ -8,7 +13,7 @@
 			<p class="TaskBody__date"> {{ task.created }} </p>
 		  </section>
 		  <section class="header__icon">
-			<button class="material-icons">edit</button>
+			<button class="material-icons">more_vert</button>
 			<p class="task-type">{{ task.type }}</p>
 		  </section>
 		</section>
@@ -21,18 +26,13 @@
 			</section>
 			<section>
 			  <button class="material-icons">attach_file</button>
-			  <p>{{ getAttachmentCount(task) }}</p>
+			  <p>{{ getCount(task, 'attachments') }}</p>
 			</section>
 			<section>
-			  <button class="material-icons">list</button>
-			  <p>20</p>
+				<button class="material-icons">group</button>
+				<p>{{ getCount(task, 'team') }}</p>
 			</section>
 		  </section>
-		  <button class="team">
-			<section class="material-icons">keyboard_arrow_down</section>
-			<p>Team</p>
-			<!-- <p>{{task.team}}</p> -->
-		  </button>
 		</section>
 		<hr class="line">
 		<section class="TaskBody__Bottom">
@@ -43,16 +43,18 @@
   </template>
   
   <script setup>
-  import { ref, computed } from 'vue';
+  import { ref } from 'vue';
   import { tasksData } from '../data.js';
   
   const tasks = ref(tasksData);
-  
-  const getAttachmentCount = (task) => {
-	return task.attachments ? task.attachments.length : 0;
-  }
 
   
+  const getCount = (task, property) => {
+  return task[property] ? task[property].length : 0;
+};
+const openPopup = () => {
+  isPopupVisible.value = true;
+};
   </script>
   
 
@@ -62,6 +64,22 @@
   min-width: 375px;
   max-width: 350px;
   display: flex;
+  .popup_control{
+	display: flex;
+	background-color: #ffffff;
+	padding: 10px;
+	left: 320px;
+	top: 590px;
+	position: absolute;
+	button{
+		margin: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 14px;
+		color: #313131;
+	}
+  }
 }
 .TaskBody{
 	margin: auto;
@@ -154,7 +172,7 @@
 	}
 	.TaskBody__Bottom{
 		width: 95%;
-		min-height: 100px;
+		min-height: 112px;
 		font-size: 14px;
 		line-height: 1.5;
 		max-height: 6rem;
